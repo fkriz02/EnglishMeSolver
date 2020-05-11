@@ -26,3 +26,12 @@ async function TEST() {
         await new Promise(r => setTimeout(r, 500));
     }
 }
+
+async function TRANSLATE() {
+    while(ex.getNumberAll() != ex.getNumberCorrect()) {
+        document.getElementById("answer_0").value = ex.getCurrentWord().english;
+        document.getElementById("answer_continue").click();
+        document.getElementById("response_continue").click();
+        await new Promise(r => setTimeout(r, 500));
+    }
+}
