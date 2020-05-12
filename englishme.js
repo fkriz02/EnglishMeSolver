@@ -35,3 +35,21 @@ async function TRANSLATE() {
         await new Promise(r => setTimeout(r, 500));
     }
 }
+
+async function FILL_GAPS() {
+    var sentences = document.getElementsByClassName("sentence");
+    var buttons = document.getElementsByClassName("btn review btn-primary btn-large");
+    for(var i = 0; i < sentences.length; i++) {
+        var elements = sentences[i].querySelectorAll('.hidden, .sentence-textbox');
+        var current;
+        for(var j = 1;j < elements.length;j++) {
+            if(elements[j].className == "sentence-textbox")
+                current = j;
+            else
+                elements[current].value += elements[j].innerHTML + " ";
+        }
+        buttons[i].click();
+        document.getElementById("continue").click();
+        await new Promise(r => setTimeout(r, 500));
+    }
+}
